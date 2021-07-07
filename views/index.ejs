@@ -3,13 +3,13 @@
 
 <head>
 	<title>
-		<%= title %>
+		Search Engine
 	</title>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.css">
 	<link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
-<body>
+<body onload="updateData()">
 	<div class="ui text container">
 		<h1 class="ui header teal center aligned"> Elastic Search </h1>
 
@@ -17,12 +17,14 @@
 			<div class="column">
 				<form class='ui large form'>
 					<div class="field">
-						<input type="text" id="search" placeholder="Enter title to search Movies">
+						<input type="text" id="search" placeholder="Enter title to search Movies"
+							onkeyup="updateData()">
 					</div>
 				</form>
 				<br>
 				<div class="ui container">
 					<div class="ui list">
+						<p id="result"></p>
 					</div>
 				</div>
 			</div>

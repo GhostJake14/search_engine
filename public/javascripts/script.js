@@ -1,57 +1,36 @@
-(function (){
-	$('form').on('submit', function (e){
-		e.preventDefault();
-		return false;
-	})
+var data = {
+	title: '',
+	genre: '',
+	country: '',
+	language: '',
+	sort: 'date',
+	order: 'desc',
+	page: 1
+}
 
-	$('#search').on('keyup', function (){
-		makeApiCall($(this).val());
-		// getSuggestion($(this).val());
-	})
+async function updateData() {
+	data.title = document.getElementById('search').value;
+	data.genre = '';
+	data.country = '',
+	data.language = '';
+	data.sort = 'date';
+	data.order = 'desc';
+	data.page = 1;
+	makeApiCall();
+}
 
-	function makeApiCall(searchText) {
-		$.ajax({
-				url: '/api/search',
-				type: 'GET',
-				dataType: 'json',
-				data: {
-					title: searchText,
-					genre: '',
-					country: '',
-					language: '',
-					sort: 'date',
-					order: 'desc',
-					page: 1
-				},
-		})
-		.then(function (data){
-			$('#took').text(data.time + ' ms')
-			$('#total').text(data.total);
-			$("div.ui.list .item").remove()
-			$("div.ui.list").append(
-				data.results.map(function (result){
-					var div = $('<div />',{ class: 'item'});
-					return div.text(result._source.title);				
-				})
-			)
-		})
-		.fail(function (err){
-			console.warn('err ',err);
-		})				
-	}
+function buildTable(result){
 
-	// var getSuggestion = function (val){
-	// 	$.ajax({
-	// 		url: '/api/suggest?search=' + val,
-	// 		type: 'GET',
-	// 		dataType: 'json',
-	// 	})
-	// 	.then(function(data) {
-	// 		console.log("success ",data);
-	// 	})
-	// 	.fail(function() {
-	// 		console.log("error");
-	// 	})
-	// }
-})()
+}
 
+async function makeApiCall() {
+	$.ajax({
+		url: '/api/search',
+		type: 'GET',
+		dataType: 'json',
+		data: data,
+	}).then(function (res) {
+		console.log(res);
+		return res;
+	});
+}

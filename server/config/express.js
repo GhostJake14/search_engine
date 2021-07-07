@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.set('view engine', 'ejs');
 app.use('/api', api)
 app.get('/', function (req, res) {
-    res.render('index', { title: 'Sample' });
+    res.render('index');
 });
 
 module.exports = app;
