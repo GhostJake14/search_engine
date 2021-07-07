@@ -22,7 +22,7 @@ async function createIndex() {
         body: {
             mappings: {
                 properties: {
-                    title: { type: 'keyword' },
+                    title: { type: 'text' },
                     released_date: { type: 'date', format: 'yyyy-mm-dd || yyyy' },
                     genre: { type: 'text' },
                     duration: { type: 'integer' },
@@ -57,4 +57,4 @@ async function createIndex() {
     });
 }
 
-module.exports = elastic;
+module.exports = { elastic, client };

@@ -1,16 +1,16 @@
 const express = require('express');
 const app = express();
-const router  = require('../routes/index');
-const elastic = require('./elastic');
+const {elastic,client} = require('../config/elastic');
 const path = require('path');
+const api = require('../routes/index');
 
 elastic.checkIndex();
 
-app.use(express.static(path.join(__dirname, '../../public'))); 
+app.use(express.static(path.join(__dirname, '../../public')));
 app.set('view engine', 'ejs');
-app.use('/', router);
+app.use('/api', api)
 app.get('/', function (req, res) {
-    res.render('index',{title:'Sample'});
+    res.render('index', { title: 'Sample' });
 });
 
 module.exports = app;
