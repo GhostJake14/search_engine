@@ -9,27 +9,91 @@
 	<link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
-<body onload="updateData()">
+<body onload="updateData();populateList()">
 	<div class="ui text container">
 		<h1 class="ui header teal center aligned"> Elastic Search </h1>
-
 		<div class="grid">
 			<div class="column">
 				<form class='ui large form'>
 					<div class="field">
 						<input type="text" id="search" placeholder="Enter title to search Movies"
-							onkeyup="updateData()">
+							onkeyup="updateData()"><br>
+						<div class="srow" style="margin: 20px 0 0;">
+							<div class="scolumn onebythree">
+								<h2 class="ui header teal" style="padding-bottom: 5px;">Filter by: </h2>
+							</div>
+							<div style="float: right;">
+								<div class="btn-group">
+									<button id="clearFilter" class="active hide" onclick="clearFilters(this);return false">Clear Filters</button>
+								</div>
+							</div>
+						</div>
+						<div class="srow">
+							<div class="scolumn onebythree pad">
+								<h2 class="ui header teal" style="margin: 5px 0;">Genre </h2>
+							</div>
+							<div class="scolumn onebythree pad">
+								<h2 class="ui header teal" style="margin: 5px 0;">Language </h2>
+							</div>
+							<div class="scolumn onebythree">
+								<h2 class="ui header teal" style="margin: 5px 0;">Country</h2>
+							</div>
+						</div>
+						<div class="srow">
+							<div class="scolumn onebythree pad">
+								<select id="genre" onchange="filterGenre()">
+									<option value="" selected>Select a genre</option>
+								</select>
+							</div>
+							<div class="scolumn onebythree pad">
+								<select id="language" onchange="filterLanguage()">
+									<option value="" selected>Select a language</option>
+								</select>
+							</div>
+							<div class="scolumn onebythree">
+								<select id="country" onchange="filterCountry()">
+									<option value="" selected>Select a country</option>
+								</select>
+							</div>
+						</div><br>
+						<div class="srow">
+							<div class="scolumn onebythree">
+								<h2 class="ui header teal" style="margin-top: 1px;">Sort By: </h2>
+							</div>
+							<div class="scolumn onebythree">
+								<div class="pad1 btn-group">
+									<button class="active" onclick="sort('date',this);return false">Date</button>
+									<button onclick="sort('duration',this);return false">Duration</button>
+								</div>
+							</div>
+							<div class="scolumn onebythree">
+								<div class="pad2 btn-group">
+									<button onclick="sort('asc',this);return false">ASC</button>
+									<button class="active" onclick="sort('desc',this);return false">DESC</button>
+								</div>
+							</div>
+						</div>
 					</div>
 				</form>
 				<br>
-				<div class="ui container">
-					<div class="ui list">
-						<p id="result"></p>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
+
+	<table>
+		<thead>
+			<tr>
+				<th>No.</th>
+				<th>Title</th>
+				<th>Genre</th>
+				<th>Duration</th>
+				<th>Released Date</th>
+				<th>Language</th>
+				<th>Country</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script type="text/javascript" src="/javascripts/script.js"></script>
 </body>

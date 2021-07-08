@@ -26,6 +26,7 @@ async function createIndex() {
                     released_date: { type: 'date', format: 'yyyy-mm-dd || yyyy' },
                     genre: { type: 'text' },
                     duration: { type: 'integer' },
+                    language: { type: 'text' },
                     country: { type: 'text' },
                     director: { type: 'text' }
                 }
@@ -44,6 +45,7 @@ async function createIndex() {
                 released_date: movie.date_published,
                 genre: movie.genre,
                 duration: movie.duration,
+                language: movie.language,
                 country: movie.country,
                 director: movie.director
             }

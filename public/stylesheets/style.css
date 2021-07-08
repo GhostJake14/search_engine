@@ -1,8 +1,95 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding   : 50px;
+  font      : 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: black;
 }
 
 a {
   color: #00B7FF;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing : 0;
+  width          : 100%;
+  border         : 1px solid #ddd;
+}
+
+th,
+td {
+  text-align: left;
+  padding   : 16px;
+}
+
+td.date {
+  text-align: right;
+}
+
+tbody>tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+thead,
+tbody>tr:nth-child(even) {
+  background-color: white;
+}
+
+.scolumn {
+  float: left;
+}
+
+.onebythree {
+  width: 33.33%;
+}
+
+.pad {
+  padding-right: 1rem;
+}
+
+.pad1 {
+  padding: 0 20%;
+}
+
+.pad2 {
+  padding: 0 25%;
+}
+
+.srow:after {
+  content: "";
+  display: table;
+  clear  : both;
+}
+
+.btn-group button {
+  background-color: #047baa;
+  /* Green background */
+  padding         : 3px 10px;
+  border          : 1px solid white;
+  /* Green border */
+  color           : white;
+  /* White text */
+  cursor          : pointer;
+  /* Pointer/hand icon */
+  float           : left;
+  /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear  : both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none;
+  /* Prevent double borders */
+}
+
+button.active {
+  background-color: #00b5ad;
+}
+
+.hide{
+  display: none;
 }
